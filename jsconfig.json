@@ -7,10 +7,10 @@
       "@/app/*": ["/src/app/*"],
       "@/utils/*": ["/src/utils/*"],
       "@/model/*": ["/src/model/*"],
-      "@/template/*": ["/src/component/template/*"],
-      "@/module/*": ["/src/component/module/*"],
-      "@/layout/*": ["/src/component/layout/*"],
-      "@/providers/*": ["/src/component/providers/*"],
+      "@/template/*": ["/src/components/template/*"],
+      "@/module/*": ["/src/components/module/*"],
+      "@/layout/*": ["/src/components/layout/*"],
+      "@/providers/*": ["/src/components/providers/*"],
     }
   }
 }

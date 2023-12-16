@@ -6,15 +6,28 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  transition: all .2s;
 }
 
 body {
   margin: 0;
   padding: 0;
   max-width: 1600px;
+  margin: auto;
+  overflow-x: hidden;
 }
 
 a {
   text-decoration: none;
   color: #333;
+}
+
+button {
+  cursor: pointer;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
 }

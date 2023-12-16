@@ -1,6 +1,14 @@
+//font
+import { yekan } from '@/utils/fonts';
+
 //Style
-import { yekan } from '@/utils/fonts'
-import './globals.css'
+import './globals.css';
+import 'animate.css';
+
+
+//Component
+import Layout from '@/layout/Layout';
+import NextAuthProvider from 'src/components/providers/NextAuthProvider';
 
 export const metadata = {
   title: 'Buy Residential',
@@ -9,8 +17,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={yekan.className}>{children}</body>
+    <html lang="fa" dir='rtl'>
+      <body className={yekan.className}>
+        <NextAuthProvider  >
+          <Layout>
+            {children}
+          </Layout>
+        </NextAuthProvider>
+      </body>
     </html>
   )
 }
