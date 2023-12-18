@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 
 //Icon
 import { CgProfile } from "react-icons/cg";
@@ -7,6 +8,11 @@ import { ImCross } from "react-icons/im";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const SideBar = ({ show, setShow ,email }) => {
+
+    const signOutHandler = () => {
+        signOut()
+    };
+    
     return (
         <>
             <GiHamburgerMenu
@@ -64,11 +70,12 @@ const SideBar = ({ show, setShow ,email }) => {
                 [&>li]:border-blue-800
                 "
                 >
-                    <li onClick={() => setShow(false)} ><Link href="/profile"> حساب کاربری </Link></li>
-                    <li onClick={() => setShow(false)} ><Link href="/profile-data"> آگهی های من </Link></li>
-                    <li onClick={() => setShow(false)} ><Link href="/add-profile-data"> ثبت آگهی </Link></li>
+                    <li onClick={() => setShow(false)} ><Link href="/dashboard/profile"> حساب کاربری </Link></li>
+                    <li onClick={() => setShow(false)} ><Link href="/dashboard/profile-data"> آگهی های من </Link></li>
+                    <li onClick={() => setShow(false)} ><Link href="/dashboard/add"> ثبت آگهی </Link></li>
 
                     <button
+                    onClick={ signOutHandler }
                         className="
                     w-full
                     border-t

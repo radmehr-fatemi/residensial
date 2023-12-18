@@ -3,13 +3,18 @@ import { getServerSession } from "next-auth";
 
 //Component
 import DashboardLayout from "src/components/template/dashboard/DashboardLayout";
+import { redirect } from "next/navigation";
 
 const layout = async ({ children }) => {
 
-    const { user } = await getServerSession(authOptions);
+    const session = await getServerSession(authOptions);
+
+    if ( !session ) redirect("/signin");
+
+    const { user } = session;
 
     return (
-        <DashboardLayout email={user.email} >
+        <DashboardLayout email={user?.email} >
             {children}
         </DashboardLayout>
     );
