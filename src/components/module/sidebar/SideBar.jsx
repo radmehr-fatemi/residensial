@@ -14,7 +14,7 @@ const SideBar = ({ show, setShow ,email }) => {
     };
     
     return (
-        <>
+        <div className="w-screen max-w-screen-2xl" >
             <GiHamburgerMenu
                 onClick={() => setShow(true)}
                 style={
@@ -46,6 +46,7 @@ const SideBar = ({ show, setShow ,email }) => {
                         flex
                         items-center
                         justify-between
+                        max-w-screen-2xl
                     " >
                     <div
                         className="
@@ -56,10 +57,11 @@ const SideBar = ({ show, setShow ,email }) => {
                         <CgProfile />
                         {email}
                     </div>
+
                     <div>
                         <ImCross
                             onClick={() => setShow(false)}
-                            className="text-3xl text-blue-900 relative -top-6 cursor-pointer " />
+                            className="text-3xl text-blue-900 relative  -top-6 cursor-pointer " />
                     </div>
                 </div>
 
@@ -91,7 +93,7 @@ const SideBar = ({ show, setShow ,email }) => {
                     </button>
                 </ul>
             </div>
-        </>
+        </div>
     );
 };
 

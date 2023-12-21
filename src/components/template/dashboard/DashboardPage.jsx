@@ -7,7 +7,8 @@ const DashboardPage = ({ user }) => {
     return (
         <div
             style={{ animation: "bounceIn .2s" }}
-            className="p-4 w-4/6 m-auto flex flex-col justify-center" >
+            className="min-h-screen max-w-screen-2xl  p-4 md:w-full  flex flex-col  " >
+
             <h3 className="text-2xl text-blue-800" >
                 درود
             </h3>
@@ -26,11 +27,12 @@ const DashboardPage = ({ user }) => {
 
             </div>
 
-            <div className="py-4 flex justify-center" >
+            <div className="w-full w-full py-4 flex justify-center" >
                 <Link
                     className=" w-80 text-center rounded-md text-white bg-blue-600 hover:bg-blue-500"
                     href="/dashboard/add"> ثبت آگهی </Link>
             </div>
+
         </div>
     );
 };
