@@ -29,7 +29,6 @@ const TextList = ({ profileData, setProfileData, type, title }) => {
             ...profileData,
             [type]: [...list]
         })
-        console.log(profileData[type[index]] ,value)
     }
     
     return (

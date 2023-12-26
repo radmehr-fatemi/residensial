@@ -27,7 +27,7 @@ const DashboardPage = ({ user }) => {
 
             </div>
 
-            <div className="w-full w-full py-4 flex justify-center" >
+            <div className="w-full py-4 flex justify-center" >
                 <Link
                     className=" w-80 text-center rounded-md text-white bg-blue-600 hover:bg-blue-500"
                     href="/dashboard/add"> ثبت آگهی </Link>

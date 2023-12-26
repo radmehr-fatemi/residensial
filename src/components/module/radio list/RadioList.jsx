@@ -9,7 +9,6 @@ const RadioList = (props) => {
             ...profileData,
             [name]: value
         })
-        console.log("category" ,category)
     } 
     return (
         <div className="border border-blue-600 w-16 px-1 text-blue-800 rounded-md flex items-center justify-between" >
