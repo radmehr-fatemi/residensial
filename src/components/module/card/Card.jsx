@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+//function
+import { sp } from "src/utils/replaceNumber";
+
 //Icon
 import { MdVilla } from "react-icons/md";
 import { RiHomeOfficeFill } from "react-icons/ri";
@@ -37,7 +40,7 @@ const Card = ({ profileData }) => {
                 {location}
             </div>
 
-            <span> {price} تومان </span>
+            <span> {sp(price)} تومان </span>
 
             <div className="py-1" >
                 <Link

@@ -1,6 +1,8 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 //Component
 import TextInput from "@/module/text input/TextInput";
@@ -8,10 +10,11 @@ import RadioList from "src/components/module/radio list/RadioList";
 import TextList from "src/components/module/text list/TextList";
 import CustomDatePicker from "src/components/module/custom date picker/CustomDatePicker";
 import SpinnerLoader from "src/components/module/spinner/SpinnerLoader";
-import toast, { Toaster } from "react-hot-toast";
 
-const AddPDPage = () => {
+const AddPDPage = ({ data }) => {
 
+
+    const router = useRouter();
     const [profileData, setProfileData] = useState({
         title: "",
         description: "",
@@ -26,6 +29,10 @@ const AddPDPage = () => {
     });
 
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        if (!!data) setProfileData(data)
+    }, [])
 
     const submitHandler = async () => {
 
@@ -68,9 +75,9 @@ const AddPDPage = () => {
             const data = await res.json();
             setLoading(false)
 
-            if ( data.error ) return toast(data.error)
+            if (data.error) return toast(data.error)
 
-            if ( res.status >= 200 ) {
+            if (res.status >= 200) {
                 setProfileData({
                     title: "",
                     description: "",
@@ -83,9 +90,60 @@ const AddPDPage = () => {
                     rules: [],
                     amenities: [],
                 })
-                return toast.success(data.massage)
+                toast.success(data.massage)
+                router.refresh()
             }
 
+        }
+    }
+
+    const editHandler = async () => {
+
+        const {
+            title,
+            description,
+            location,
+            phone,
+            price,
+            realState,
+            constructionDate,
+            category,
+            rules,
+            amenities,
+        } = profileData;
+
+
+        if (
+            !title ||
+            !description ||
+            !location ||
+            !phone ||
+            !price ||
+            !realState ||
+            !constructionDate ||
+            !category ||
+            !rules ||
+            !amenities
+        ) {
+            return toast.error(" اعطلاعات نامعتبر است ")
+        }
+
+        const res = await fetch("/api/profile", {
+            method: "PATCH",
+            headers: { "Content-Type": "Application/json" },
+            body: JSON.stringify(profileData)
+        })
+        
+        setLoading(true)
+
+        const result = await res.json();
+        setLoading(false)
+
+        if (result.error) return toast.error(result.error)
+
+        if (res.status >= 200) {
+            toast.success(result.massage)
+            router.refresh()
         }
     }
 
@@ -96,8 +154,9 @@ const AddPDPage = () => {
             }}
             className="max-w-screen-xl w-screen flex flex-col items-center  text-blue-900" >
 
-            <h1 className="text-center text-2xl text-blue-600"
-            > ثبت آگهی </h1>
+            <h1 className="text-center text-2xl text-blue-600">
+                {!!data ? "ویرایش آگهی" : "ثبت آگهی"}
+            </h1>
 
             <div className="w-5/6" >
                 <TextInput
@@ -192,10 +251,18 @@ const AddPDPage = () => {
                         loading ? (
                             <SpinnerLoader />
                         ) :
-                            (<button
-                                onClick={submitHandler}
-                                className="w-32 bg-blue-600 text-white py-1 rounded-md hover:bg-blue-500"
-                            > ثبت آگهی </button>)
+                            (
+                                !!data ?
+                                    <button
+                                        onClick={editHandler}
+                                        className="w-32 bg-blue-600 text-white py-1 rounded-md hover:bg-blue-500"
+                                    > ویرایش آگهی </button> :
+
+                                    <button
+                                        onClick={submitHandler}
+                                        className="w-32 bg-blue-600 text-white py-1 rounded-md hover:bg-blue-500"
+                                    > ثبت آگهی </button>
+                            )
                     }
                 </div>
             </div>

@@ -46,8 +46,9 @@ const TextList = ({ profileData, setProfileData, type, title }) => {
 
                         <input
                             onChange={ e  => changeHandler(e ,index)}
+                            value={item}
                             type="text"
-                            className="w-9/12 border border-blue-900 rounded-md"
+                            className="w-9/12 px-1 border border-blue-900 rounded-md"
                         />
 
                         <button

@@ -2,7 +2,7 @@
 
 import { InfinitySpin} from "react-loader-spinner";
 
-const SpinnerLoader = ({ children }) => {
+const SpinnerLoader = ({ children ,error }) => {
     return (
         <div 
         className="
@@ -13,8 +13,8 @@ const SpinnerLoader = ({ children }) => {
             items-center
         " >
             <InfinitySpin
-                width='200'
-                color="#4fa9ff"
+                width={ error ? "100" : "200" }
+                color={ error ? "red" : "#4fa9ff" }
             />
             <p className="text-blue-900" > {children} </p>
         </div>
