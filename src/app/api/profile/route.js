@@ -1,3 +1,4 @@
+import { Types } from "mongoose";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 import Profile from "src/model/Profile";
@@ -73,6 +74,7 @@ const POST = async (req) => {
             category,
             rules,
             amenities,
+            userId : new Types.ObjectId(existingUser._id)
         });
 
         return NextResponse.json(

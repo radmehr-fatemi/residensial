@@ -11,13 +11,14 @@ const Dashboard = async () => {
     try {
         await connectDB()
     } catch (err) {
-        console.log("Error-----------------------" ,err)
+        console.log("Error-----------------------", err)
         return <SpinnerLoader> آینترنت خود را برسی کنید </SpinnerLoader>
     }
-        const {user: {email}} = await getServerSession(authOptions);
-        const user = await UserB.findOne({email})
-        
-        return <DashboardPage user={user} />
+
+    const { user: { email } } = await getServerSession(authOptions);
+    const user = await UserB.findOne({ email })
+
+    return <DashboardPage user={user} />
 };
 
 export default Dashboard;

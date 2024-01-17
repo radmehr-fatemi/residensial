@@ -73,7 +73,7 @@ const SideBar = ({ show, setShow ,email }) => {
                 "
                 >
                     <li onClick={() => setShow(false)} ><Link href="/dashboard/profile"> حساب کاربری </Link></li>
-                    <li onClick={() => setShow(false)} ><Link href="/dashboard/profile-data"> آگهی های من </Link></li>
+                    <li onClick={() => setShow(false)} ><Link href="/dashboard/my-profiles"> آگهی های من </Link></li>
                     <li onClick={() => setShow(false)} ><Link href="/dashboard/add"> ثبت آگهی </Link></li>
 
                     <button
