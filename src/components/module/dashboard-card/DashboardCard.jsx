@@ -36,7 +36,7 @@ const DashboardCard = ({ profileData }) => {
 
     return (
         <div
-            className="w-full h-fit my-4 p-2 py-3 rounded-md border-2 border-blue-600 md:m-4 md:w-80t"
+            className="w-full h-fit my-4 p-2 py-3 rounded-md border-2 border-blue-600 md:m-4 md:w-80"
             style={{ animation: "zoomInDown 1s" }}
         >
             <Card profileData={profileData} />
