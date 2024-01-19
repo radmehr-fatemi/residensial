@@ -18,7 +18,7 @@ const CategoryCard = ({ data ,index }) => {
              onClick={() => setIsClick(true)}
         >
             <Link
-                href={"/"}
+                href={{ pathname: "/buy-residentials" ,query: { "category": Object.keys(data) } }}
                 className="flex flex-col justify-center items-center "
             >
                 <Image src={`/images/${Object.keys(data)}.png`} width={300} height={240} priority={true} alt="تصویر مکان" />

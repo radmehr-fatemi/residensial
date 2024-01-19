@@ -30,4 +30,5 @@ input,
 button,
 textarea {
   font-family: inherit;
+  animation: SS .2s infinite;
 }
