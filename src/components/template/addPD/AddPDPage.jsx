@@ -248,7 +248,7 @@ const AddPDPage = ({ data }) => {
 
                 <div className="flex justify-center py-6" >
                     {
-                        loading ? (
+                        !!loading ? (
                             <SpinnerLoader />
                         ) :
                             (

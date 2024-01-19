@@ -10,7 +10,7 @@ const CategoryCard = ({ data ,index }) => {
     
     return (
         <div
-                className="p-2 my-3 rounded-md"
+                className="p-2 my-3 rounded-md hover:scale-105"
                 style={{ 
                 animation: isClick ? "flipOutX .3s forwards" : `zoomIn .5s .${index + 2}s`,
                 boxShadow: "0 3px 8px #3B6690"
@@ -29,5 +29,6 @@ const CategoryCard = ({ data ,index }) => {
         </div>
     );
 };
+
 
 export default CategoryCard;

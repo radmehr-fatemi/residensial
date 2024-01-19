@@ -5,6 +5,48 @@ import Profile from "src/model/Profile";
 import UserB from "src/model/UserB";
 import connectDB from "src/utils/connectDB";
 
+const GET = async (req) => {
+
+    try {
+
+        try {
+            await connectDB()
+        } catch (err) {
+            console.log("Error in connected to DB", err)
+            return NextResponse.json({
+                error: "مشکل در سرور"
+            })
+        }
+
+
+        const session = await getServerSession(req);
+
+        if (!session) return NextResponse.json(
+            { error: "لطفا واردحساب کاربری خود شوید" },
+            { status: 401 }
+        )
+
+        const profiles = await Profile.find().select("-userId");
+
+        if (!profiles) return NextResponse.json(
+            { error: "مشکلی رخ داده است" },
+            { status: 422 }
+        )
+
+        return NextResponse.json(
+            { data: profiles },
+            { status: 200 }
+        )
+
+    } catch (err) {
+        console.log("Error in post data --------------", err)
+        return NextResponse.json(
+            { error: "مشکل در سرور" },
+            { status: 500 }
+        )
+    }
+}
+
 const POST = async (req) => {
 
     try {
@@ -99,7 +141,6 @@ const PATCH = async (req) => {
         try {
             await connectDB()
         } catch (err) {
-            console.log("Error in connected to DB", err)
             return NextResponse.json({
                 error: "مشکل در سرور"
             })
@@ -136,7 +177,7 @@ const PATCH = async (req) => {
         } = body;
 
         if (
-            !id ||
+            !_id ||
             !title ||
             !description ||
             !location ||
@@ -159,7 +200,7 @@ const PATCH = async (req) => {
             { status: 422 }
         )
 
-        console.log("Hear----------------", _id ,"Hesr" ,profile.userId)
+        console.log("Hear----------------", _id, "Hesr", profile.userId)
         // return NextResponse.json("ccc")
 
         if (!profile.userId.equals(existingUser._id)) return NextResponse.json(
@@ -198,4 +239,4 @@ const PATCH = async (req) => {
     }
 }
 
-export { POST, PATCH }
+export { POST, PATCH, GET }

@@ -34,23 +34,30 @@ const Header = () => {
                 [&>a]:px-1
                 md:[&>a]:px-4
              " >
-                <Link href="/"> صفحه اصلی </Link>
-                <Link href="/buy-residential"> آگهی ها </Link>
+                <Link
+                    href="/"
+                    className="hover:scale-105"
+                > صفحه اصلی </Link>
+                
+                <Link
+                    href="/buy-residentials"
+                    className="hover:scale-105"
+                > آگهی ها </Link>
             </div>
 
             <div>
                 {
                     session.status === "authenticated" ? (
                         <Link href="/dashboard" className="text-white  inline-block" >
-                        <CgProfile
-                            className="
+                            <CgProfile
+                                className="
                             hover:bg-white
                             hover:text-blue-600
                             rounded-2xl
                             text-3xl
                             cursor-pointer
                             " />
-                            </Link>
+                        </Link>
 
                     ) : (
                         <Link
