@@ -4,7 +4,7 @@ import connectDB from "src/utils/connectDB";
 import BuyResidentialsPage from "src/components/template/buy-residentials/buyResidentialsPage";
 import Profile from "src/model/Profile";
 
-const BuyResidentials = async () => {
+const BuyResidentials = async ({ searchParams }) => {
 
     try {
         await connectDB()
@@ -21,7 +21,17 @@ const BuyResidentials = async () => {
         > هنوز هیچ آگهی ثبت نشده است </h1>
     )
 
-    return <BuyResidentialsPage data={profiles} />
+    let finalData = profiles;
+    if ( !!searchParams.category ) finalData = profiles.filter( i => i.category === searchParams.category );
+
+    if ( !finalData.length ) return  (
+        <h1
+        className="w-fit m-auto px-1 rounded-md text-center text-orange-500 first-letter bg-orange-200"
+        style={{ animation: "fadeInDown .6s" }}
+        > آگهی مورد نظر یافت نشد </h1>
+    )
+    
+    return <BuyResidentialsPage data={finalData} />
 };
 
 export default BuyResidentials;
