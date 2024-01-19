@@ -1,12 +1,13 @@
 //Component
+import BuyResidentialsSidbar from "src/components/module/buy-residentials-sidbar/BuyResidentialsSidbar";
 import Card from "src/components/module/card/Card";
 
 const BuyResidentialsPage = ({ data }) => {
-
     return (
         <div
             className="p-4 flex flex-wrap justify-evenly items-baseline"
         >
+            <BuyResidentialsSidbar />
 
             {
                 data.map(((i, index) => (

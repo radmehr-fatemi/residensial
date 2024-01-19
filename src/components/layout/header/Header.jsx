@@ -28,20 +28,24 @@ const Header = () => {
             ">
             <div
                 className="
+                w-2/5
                 flex
+                justify-between
                 items-center
                 [&>a]:text-white
                 [&>a]:px-1
+                md:w-72
+                md:[&>a]:w-3/6
                 md:[&>a]:px-4
              " >
                 <Link
                     href="/"
-                    className="hover:scale-105"
+                    className="md:hover:text-lg"
                 > صفحه اصلی </Link>
                 
                 <Link
                     href="/buy-residentials"
-                    className="hover:scale-105"
+                    className="md:hover:text-lg"
                 > آگهی ها </Link>
             </div>
 

@@ -13,7 +13,7 @@ import { TiArrowLeft } from "react-icons/ti";
 
 const Card = ({ profileData }) => {
 
-    const { title, location, category, price } = profileData;
+    const { title, location, category, price ,_id } = profileData;
     const icon = {
         villa: <MdVilla />,
         office: <RiHomeOfficeFill />,
@@ -45,7 +45,7 @@ const Card = ({ profileData }) => {
             <div className="py-1" >
                 <Link
                  className="text-blue-500 flex justify-start items-center"
-                 href="/" >
+                 href={`/buy-residentials/${_id}`} >
                     <p> مشاهده آگهی </p>
                     <TiArrowLeft className="text-xl" />
                 </Link>
