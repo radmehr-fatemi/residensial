@@ -3,7 +3,6 @@ import Link from "next/link";
 const DashboardPage = ({ user }) => {
 
     const { createAt } = user;
-
     return (
         <div
             style={{ animation: "bounceIn .2s" }}

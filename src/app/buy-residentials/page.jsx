@@ -12,7 +12,7 @@ const BuyResidentials = async ({ searchParams }) => {
         console.log("Error in Connected to Db", err)
     }
 
-    const profiles = await Profile.find().select("-userId");
+    const profiles = await Profile.find({ published: true }).select("-userId");
 
     if (!profiles.length) return (
         <h1

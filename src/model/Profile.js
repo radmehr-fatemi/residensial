@@ -55,6 +55,11 @@ const profileSchema = new Schema({
     userId: {
         type: Schema.Types.ObjectId,
         ref: "UserB"
+    },
+
+    published: {
+        type: Boolean,
+        default: false
     }
 },
     { timestamp: true }

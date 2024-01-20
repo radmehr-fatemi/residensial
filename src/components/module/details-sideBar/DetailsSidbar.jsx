@@ -11,6 +11,9 @@ import { FaStore } from "react-icons/fa";
 //function
 import { e2p, sp } from "src/utils/replaceNumber";
 
+//Component
+import Share from "src/components/element/share/Share";
+
 const DetailsSidebar = ({ data }) => {
 
     const categories = {
@@ -58,12 +61,7 @@ const DetailsSidebar = ({ data }) => {
                 {e2p(phone)}
             </div>
 
-            <div
-                style={{ animation: "backInRight .7s .4s " }}
-                className="flex items-center" >
-                <AiOutlineShareAlt className="ml-1 text-xl text-blue-600" />
-                اشتراک گذاری
-            </div>
+            <Share />
 
             <div
                 style={{ animation: "backInRight .7s .6s " }}

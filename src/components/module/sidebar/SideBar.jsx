@@ -7,12 +7,12 @@ import { BiLogInCircle } from "react-icons/bi";
 import { ImCross } from "react-icons/im";
 import { GiHamburgerMenu } from "react-icons/gi";
 
-const SideBar = ({ show, setShow ,email }) => {
+const SideBar = ({ show, setShow, email, role }) => {
 
     const signOutHandler = () => {
         signOut()
     };
-    
+
     return (
         <div className="w-screen max-w-screen-2xl" >
             <GiHamburgerMenu
@@ -26,6 +26,7 @@ const SideBar = ({ show, setShow ,email }) => {
                     cursor-pointer
                 "
             />
+
             <div
                 style={
                     show ? { animation: "zoomInUp .3s forwards" } : { animation: "backOutLeft .3s forwards" }
@@ -55,6 +56,9 @@ const SideBar = ({ show, setShow ,email }) => {
                             [&>svg]:mb-1
                             " >
                         <CgProfile />
+                        <h3>
+                            {role === "ADMIN" && <span> ادمین </span>}
+                        </h3>
                         {email}
                     </div>
 
@@ -75,9 +79,12 @@ const SideBar = ({ show, setShow ,email }) => {
                     <li onClick={() => setShow(false)} ><Link href="/dashboard/profile"> حساب کاربری </Link></li>
                     <li onClick={() => setShow(false)} ><Link href="/dashboard/my-profiles"> آگهی های من </Link></li>
                     <li onClick={() => setShow(false)} ><Link href="/dashboard/add"> ثبت آگهی </Link></li>
-
+                    {
+                        role === "ADMIN" &&
+                        <li onClick={() => setShow(false)} ><Link href="/admin"> در انتظار تایید </Link></li>
+                    }
                     <button
-                    onClick={ signOutHandler }
+                        onClick={signOutHandler}
                         className="
                     w-full
                     border-t

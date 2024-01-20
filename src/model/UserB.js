@@ -1,24 +1,29 @@
 import { Schema, model, models } from "mongoose";
 
 const userSchema = new Schema({
-    email:{
+    email: {
         type: String,
-        required:true
+        required: true
     },
-    
-    password:{
+
+    password: {
         type: String,
-        required:true
+        required: true
     },
 
     createAt: {
         type: Date,
         default: () => Date.now(),
-        immutable:true
-    }
+        immutable: true
+    },
+
+    role: {
+        type: String,
+        default: "USER"
+    },
 
 });
 
-const UserB = models?.UserB || new model("UserB" ,userSchema);
+const UserB = models?.UserB || new model("UserB", userSchema);
 
 export default UserB;

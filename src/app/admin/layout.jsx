@@ -1,11 +1,12 @@
 import { authOptions } from "src/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 
-//Component
-import DashboardLayout from "src/components/template/dashboard/DashboardLayout";
 import { redirect } from "next/navigation";
 import connectDB from "src/utils/connectDB";
 import UserB from "src/model/UserB";
+
+//Component
+import DashboardLayout from "src/components/template/dashboard/DashboardLayout";
 
 const layout = async ({ children }) => {
 
