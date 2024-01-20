@@ -11,7 +11,7 @@ const BuyResidentials = async ({ searchParams }) => {
 
     const session = await getServerSession(authOptions);
 
-    if ( !session ) return redirect("/signin")
+    if ( !session ) redirect("/signin")
 
     try {
         await connectDB()
