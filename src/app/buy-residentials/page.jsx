@@ -1,7 +1,7 @@
 import connectDB from "src/utils/connectDB";
 
 //Component
-import BuyResidentialsPage from "src/components/template/buy-residentials/buyResidentialsPage";
+import BuyResidentialsPage from "src/components/template/buy-residentials/BuyResidentialsPage";
 import Profile from "src/model/Profile";
 
 const BuyResidentials = async ({ searchParams }) => {
