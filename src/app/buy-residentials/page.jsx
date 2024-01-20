@@ -1,10 +1,17 @@
 import connectDB from "src/utils/connectDB";
+import Profile from "src/model/Profile";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
 
 //Component
 import BuyResidentialsPage from "src/components/template/buy-residentials/BuyResidentialsPage";
-import Profile from "src/model/Profile";
 
 const BuyResidentials = async ({ searchParams }) => {
+
+    const session = await getServerSession(authOptions);
+
+    if ( !session ) return redirect("/signin")
 
     try {
         await connectDB()
