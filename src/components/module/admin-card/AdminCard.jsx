@@ -1,19 +1,72 @@
 "use client"
 
+import toast, { Toaster } from "react-hot-toast";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 //function
 import { sp } from "src/utils/replaceNumber";
 
 //Icon
 import { MdOutlineLocationOn } from "react-icons/md";
+import SpinnerLoader from "../spinner/SpinnerLoader";
 
 const AdminCard = ({ data }) => {
 
     const { title, description, location, price, _id } = data;
 
+    const [done, setDone] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+    const router = useRouter();
+
+    const publishHandler = async () => {
+        const res = await fetch(`/api/profile/published/${_id}`, {
+            method: "PATCH"
+        });
+
+        setLoading(true)
+        setDone(false)
+
+        const data = await res.json();
+
+        setLoading(false)
+
+        if (data.error) return toast.error(data.error)
+
+        if (res.status >= 200) {
+            toast.success(data.massage)
+            setDone(true)
+            setTimeout(() => router.refresh(), 500)
+        }
+    }
+
+    const deleteHandler = async () => {
+        const res = await fetch(`/api/profile/published/${_id}`, {
+            method: "DELETE"
+        });
+
+        setLoading(true)
+        setDone(false)
+
+        const data = await res.json();
+
+        setLoading(false)
+
+        if (data.error) return toast.error(data.error)
+
+        if (res.status >= 200) {
+            toast.success(data.massage)
+            setDone(true)
+            setTimeout(() => router.refresh(), 500)
+        }
+    
+     }
+
     return (
         <div
             className="w-full h-fit overflow-hidden p-3 border border-blue-500 rounded-md my-2 md:w-96 md:mx-2"
-            style={{ animation: "zoomIn .4s" }}
+            style={done ? { animation: "zoomOutDown .3s forwards" } : { animation: "zoomIn .4s" }}
         >
             <h3
                 style={{ animation: "lightSpeedInRight .4s .2s" }}
@@ -36,9 +89,14 @@ const AdminCard = ({ data }) => {
                     style={{ animation: "lightSpeedInRight .4s .8s" }}
                 > {sp(price)} تومان </h4>
             </div>
+            {
+                loading ?
+                    <div className="h-10 pr-8" >
+                        <SpinnerLoader width={100} />
+                    </div> :
 
-            <div
-                className="
+                    <div
+                        className="
                     flex
                     items-center
                     justify-between
@@ -47,17 +105,21 @@ const AdminCard = ({ data }) => {
                     [&>button]:border 
                     [&>button]:rounded-md 
             "
-            >
-                <button
-                    style={{ animation: "zoomInUp .4s .2s" }}
-                    className="border-green-600 text-green-600 hover:bg-green-100"
-                > انتشار </button>
+                    >
+                        <button
+                            style={{ animation: "zoomInUp .4s .2s" }}
+                            className="border-green-600 text-green-600 hover:bg-green-100"
+                            onClick={publishHandler}
+                        > انتشار </button>
 
-                <button
-                    style={{ animation: "zoomInUp .4s .2s" }}
-                    className="border-red-600 text-red-600 hover:bg-red-100"
-                    > حذف </button>
-            </div>
+                        <button
+                            style={{ animation: "zoomInUp .4s .2s" }}
+                            className="border-red-600 text-red-600 hover:bg-red-100"
+                            onClick={deleteHandler}
+                        > حذف </button>
+                    </div>
+            }
+            <Toaster />
         </div>
     );
 };

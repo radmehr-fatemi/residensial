@@ -44,7 +44,7 @@ const DashboardCard = ({ profileData }) => {
             {
                 loading ?
                     <div className="w-full h-8 pr-6 " >
-                        <SpinnerLoader error={true} />
+                        <SpinnerLoader error={true} width={100} />
                     </div> :
 
                     <div

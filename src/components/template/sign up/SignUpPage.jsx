@@ -122,7 +122,7 @@ const SignUpPage = () => {
                 />
                 {
                     isLoad ?
-                        (<div className="flex justify-center " >
+                        (<div className="flex justify-center pr-6" >
                             <InfinitySpin
                                 width='100'
                                 color="#4fa9ff"

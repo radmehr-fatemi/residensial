@@ -76,7 +76,7 @@ const SideBar = ({ show, setShow, email, role }) => {
                 [&>li]:border-blue-800
                 "
                 >
-                    <li onClick={() => setShow(false)} ><Link href="/dashboard/profile"> حساب کاربری </Link></li>
+                    <li onClick={() => setShow(false)} ><Link href="/dashboard"> حساب کاربری </Link></li>
                     <li onClick={() => setShow(false)} ><Link href="/dashboard/my-profiles"> آگهی های من </Link></li>
                     <li onClick={() => setShow(false)} ><Link href="/dashboard/add"> ثبت آگهی </Link></li>
                     {
