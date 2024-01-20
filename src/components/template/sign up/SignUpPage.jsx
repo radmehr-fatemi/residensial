@@ -114,7 +114,7 @@ const SignUpPage = () => {
 
                 <label htmlFor="rePassword"> تکرار پسورد </label>
                 <input
-                    type="rePassword"
+                    type="password"
                     value={form.rePassword}
                     onChange={changeHandler}
                     name="rePassword"
@@ -122,7 +122,7 @@ const SignUpPage = () => {
                 />
                 {
                     isLoad ?
-                        (<div className="flex justify-center pr-6" >
+                        (<div className="flex justify-center pr-8" >
                             <InfinitySpin
                                 width='100'
                                 color="#4fa9ff"

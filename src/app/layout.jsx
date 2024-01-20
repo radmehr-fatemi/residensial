@@ -11,8 +11,9 @@ import Layout from '@/layout/Layout';
 import NextAuthProvider from 'src/components/providers/NextAuthProvider';
 
 export const metadata = {
-  title: 'Buy Residential',
-  description: 'Residential shopping for sell and buy residential ',
+  title: 'املاک| پروژه رادمهر',
+  description: 'سایت خرید و فروش املاک ',
+  icons: { icon: "./favicon.ico" }
 }
 
 export default function RootLayout({ children }) {

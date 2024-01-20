@@ -10,47 +10,35 @@ export const authOptions = {
     providers: [
         CredentialsProvider({
             async authorize(credential) {
+
                 try {
-
-                    try {
-                        await connectDB()
-                    } catch (err) {
-                        console.log("Error in connected to DB", err)
-                        return NextResponse.json({
-                            error: "مشکل در سرور"
-                        })
-                    }
-
-                    const { email, password } = credential;
-
-                    if (!email || !password) return NextResponse.json(
-                        { error: "اعطلاعات نامعتبر است" },
-                        { status: 422 }
-                    );
-
-                    const existingUser = await UserB.findOne({ email });
-                    if (!existingUser) return NextResponse.json(
-                        { error: "کاربر وجود ندارد" },
-                        { status: 402 }
-                    );
-
-                    const isValid = await verifyPassword(password, existingUser.password)
-
-                    if (!isValid) throw new Error("ایمیل یا پسورد نادرست است")
-
-                    NextResponse.json({
-                        massage: "با موفقیت وارد شدید",
-                    },
-                        { status: 200 }
-                    )
-
-                    return { email }
-
+                    await connectDB()
                 } catch (err) {
-                    console.log("Error in login", err)
-                    throw new Error("مشکل در سرور")
+                    console.log("Error in connected to DB", err)
+                    return NextResponse.json({
+                        error: "مشکل در سرور"
+                    })
                 }
 
+                const { email, password } = credential;
+
+                if (!email || !password) throw new Error("اعطلاعات نامعتبر است")
+
+                const existingUser = await UserB.findOne({ email });
+
+                if (!existingUser) throw new Error("کاربر وجود ندارد")
+
+                const isValid = await verifyPassword(password, existingUser.password)
+
+                if (!isValid) throw new Error("ایمیل یا پسورد نادرست است")
+
+                NextResponse.json({
+                    massage: "با موفقیت وارد شدید",
+                },
+                    { status: 200 }
+                )
+
+                return { email }
             }
         })
     ]

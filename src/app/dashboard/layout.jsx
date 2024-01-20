@@ -6,6 +6,11 @@ import DashboardLayout from "src/components/template/dashboard/DashboardLayout";
 import { redirect } from "next/navigation";
 import connectDB from "src/utils/connectDB";
 import UserB from "src/model/UserB";
+import Notfound from "src/components/module/notfound/Notfound";
+
+export const metadata = {
+    title: "پنل کاربری املاک",
+}
 
 const layout = async ({ children }) => {
 
@@ -19,9 +24,9 @@ const layout = async ({ children }) => {
         console.log("Error in connected to DB", err)
     }
 
-    const [user] = await UserB.find({ email: session.user.email });
+    const user = await UserB.findOne({ email: session.user.email });
     
-    if ( !user ) return <h1> مشکلی رخ داده است </h1>
+    if ( !user ) return <Notfound> مشکلی رخ داده است  </Notfound>
 
     return (
         <DashboardLayout userData={JSON.parse(JSON.stringify(user))} >

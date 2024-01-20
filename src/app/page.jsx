@@ -7,9 +7,9 @@ import HomePage from "src/components/template/home/HomePage";
 
 const Home = async () => {
 
-  const session = await getServerSession(authOptions);
+  // const session = await getServerSession(authOptions);
 
-  if (!session) redirect("/signup")
+  // if (!session) redirect("/signup")
 
   return <HomePage />
 };

@@ -12,7 +12,7 @@ const Details = async ({ params: { profileId } }) => {
         console.log("Error in Connected to Db", err)
     }
 
-    const [profile] = await Profile.find({ _id: profileId });
+    const profile = await Profile.findOne({ _id: profileId });
 
     if (!profile) return (
         <h1
@@ -25,3 +25,23 @@ const Details = async ({ params: { profileId } }) => {
 };
 
 export default Details;
+
+export const generateMetadata = async ({params: { profileId }}) => {
+    try {
+        await connectDB()
+    } catch (err) {
+        console.log("Error in Connected to Db", err)
+    }
+
+    const profile = await Profile.findOne({ _id: profileId });
+
+    if ( !profile ) return {}
+
+    return {
+        title: profile.title,
+        description: profile.description,
+        other: {
+            programmer: "علی رضا فاطمی"
+        }
+    }
+}

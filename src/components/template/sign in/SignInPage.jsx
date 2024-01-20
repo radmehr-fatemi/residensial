@@ -44,7 +44,7 @@ const SignUpPage = () => {
 
         if (res.status <= 200) {
             toast.success("با موفقیت وارد شدید")
-            setTimeout(() => router.replace("/"), 1400)
+            setTimeout(() => router.replace("/dashboard"), 1400)
 
         } else if (res.error) {
             toast.error(res.error)
@@ -112,7 +112,7 @@ const SignUpPage = () => {
 
                 {
                     isLoad ?
-                        (<div className="flex justify-center pr-6" >
+                        (<div className="flex justify-center pr-8" >
                             <InfinitySpin
                                 width='100'
                                 color="#4fa9ff"

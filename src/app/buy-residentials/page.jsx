@@ -9,9 +9,9 @@ import BuyResidentialsPage from "src/components/template/buy-residentials/BuyRes
 
 const BuyResidentials = async ({ searchParams }) => {
 
-    const session = await getServerSession(authOptions);
+    // const session = await getServerSession(authOptions);
 
-    if ( !session ) redirect("/signin")
+    // if ( !session ) redirect("/signin")
 
     try {
         await connectDB()

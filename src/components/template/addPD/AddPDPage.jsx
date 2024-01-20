@@ -152,7 +152,7 @@ const AddPDPage = ({ data }) => {
             style={{
                 animation: "zoomInLeft .5s"
             }}
-            className="max-w-screen-xl w-screen flex flex-col items-center  text-blue-900" >
+            className="max-w-screen-xl flex flex-col items-center  text-blue-900" >
 
             <h1 className="text-center text-2xl text-blue-600">
                 {!!data ? "ویرایش آگهی" : "ثبت آگهی"}
